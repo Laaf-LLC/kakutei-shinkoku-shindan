@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>メルカリ・Amazon販売 確定申告フローチャート</title>
+    <title>【2025年最新版】メルカリ・Amazon販売 確定申告フローチャート</title>
     <style>
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -13,7 +13,7 @@
             color: #333;
             min-height: 100vh;
         }
-        
+       
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -22,34 +22,34 @@
             padding: 30px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-        
+       
         .header {
             text-align: center;
             margin-bottom: 40px;
             border-bottom: 3px solid #4CAF50;
             padding-bottom: 20px;
         }
-        
+       
         .header h1 {
             color: #2c3e50;
             margin: 0;
             font-size: 2.2em;
             font-weight: 700;
         }
-        
+       
         .header .subtitle {
             color: #7f8c8d;
             margin-top: 10px;
             font-size: 1.1em;
         }
-        
+       
         .flowchart {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
         }
-        
+       
         .question-box {
             background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
@@ -62,7 +62,7 @@
             box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
             position: relative;
         }
-        
+       
         .answer-section {
             display: flex;
             gap: 30px;
@@ -70,7 +70,7 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-        
+       
         .answer-button {
             background: linear-gradient(135deg, #e74c3c, #c0392b);
             color: white;
@@ -84,21 +84,21 @@
             box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
             min-width: 120px;
         }
-        
+       
         .answer-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
         }
-        
+       
         .answer-button.yes {
             background: linear-gradient(135deg, #27ae60, #229954);
             box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
         }
-        
+       
         .answer-button.yes:hover {
             box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
         }
-        
+       
         .result-box {
             background: linear-gradient(135deg, #f39c12, #e67e22);
             color: white;
@@ -111,22 +111,22 @@
             box-shadow: 0 10px 30px rgba(243, 156, 18, 0.3);
             margin: 20px 0;
         }
-        
+       
         .result-box.required {
             background: linear-gradient(135deg, #e74c3c, #c0392b);
             box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
         }
-        
+       
         .result-box.not-required {
             background: linear-gradient(135deg, #27ae60, #229954);
             box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
         }
-        
+       
         .result-box.partial {
             background: linear-gradient(135deg, #f39c12, #e67e22);
             box-shadow: 0 10px 30px rgba(243, 156, 18, 0.3);
         }
-        
+       
         .arrow {
             width: 0;
             height: 0;
@@ -135,7 +135,7 @@
             border-top: 20px solid #bdc3c7;
             margin: 10px 0;
         }
-        
+       
         .explanation {
             background: #ecf0f1;
             padding: 15px;
@@ -145,11 +145,11 @@
             line-height: 1.6;
             color: #2c3e50;
         }
-        
+       
         .hidden {
             display: none;
         }
-        
+       
         .calculation-help {
             background: #fff3cd;
             border: 1px solid #ffeaa7;
@@ -158,12 +158,12 @@
             margin: 20px 0;
             font-size: 0.95em;
         }
-        
+       
         .calculation-help h4 {
             color: #856404;
             margin-top: 0;
         }
-        
+       
         .reset-button {
             background: linear-gradient(135deg, #95a5a6, #7f8c8d);
             color: white;
@@ -175,7 +175,7 @@
             margin-top: 20px;
             transition: all 0.3s ease;
         }
-        
+       
         .reset-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(149, 165, 166, 0.4);
@@ -324,7 +324,6 @@
         </div>
 
         <div class="flowchart">
-            <!-- Step 1: 販売内容の確認 -->
             <div id="step1" class="question-box">
                 <strong>【STEP 1】何を販売していますか？</strong>
                 <div class="explanation">
@@ -337,7 +336,6 @@
                 <button class="answer-button" onclick="nextStep(1, 'collectible')">💎 収集品・高級品<br>（トレカ・限定品・貴金属など）</button>
             </div>
 
-            <!-- Step 2A: 生活用品の場合 -->
             <div id="step2a" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
@@ -361,7 +359,6 @@
                 </div>
             </div>
 
-            <!-- Step 2B: 営利目的の場合 -->
             <div id="step2b" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
@@ -385,7 +382,6 @@
                 </div>
             </div>
 
-            <!-- Step 2C: 収集品の場合 -->
             <div id="step2c" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
@@ -409,7 +405,6 @@
                 </div>
             </div>
 
-            <!-- Step 3A: 生活用品（30万円以下）の継続性確認 -->
             <div id="step3a" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
@@ -427,17 +422,16 @@
                 </div>
             </div>
 
-            <!-- Step 3B: 継続的営利目的の身分確認 -->
             <div id="step3b" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
-                    <strong>【STEP 3B】あなたの身分を教えてください</strong>
+                    <strong>【STEP 3B】あなたの状況を教えてください</strong>
                     <div class="explanation">
-                        所得区分と申告基準が身分により異なります
+                        申告基準が状況により異なります
                     </div>
                 </div>
                 <div class="info-box">
-                    💡 <strong>所得区分の重要性：</strong>事業所得は青色申告控除・損益通算可能、雑所得は控除なし・損益通算不可
+                    💡 <strong>所得区分について：</strong>継続的・本格的な活動で帳簿をつけている場合は、節税メリットの大きい「事業所得」として申告できる可能性があります。それ以外は通常「雑所得」となります。
                 </div>
                 <div class="answer-section">
                     <button class="answer-button" onclick="nextStep(3, 'employee')">会社員・パート</button>
@@ -445,15 +439,17 @@
                     <button class="answer-button" onclick="nextStep(3, 'housewife')">専業主婦・無職</button>
                     <button class="answer-button" onclick="nextStep(3, 'business-owner')">個人事業主・フリーランス</button>
                 </div>
+                <div class="warning-box">
+                    ※年金受給者の方は、公的年金等の収入額によって基準が異なりますので、本診断の対象外です。税務署や税理士にご相談ください。
+                </div>
             </div>
 
-            <!-- Step 3C: 時々・小規模営利目的 -->
             <div id="step3c" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
                     <strong>【STEP 3C】年間の利益はいくらですか？</strong>
                     <div class="explanation">
-                        小規模でも利益があれば申告が必要な場合があります
+                        小規模でも利益があれば申告が必要な場合があります。利益は「雑所得」と見なされます。
                     </div>
                 </div>
                 <div class="answer-section">
@@ -462,7 +458,6 @@
                 </div>
             </div>
 
-            <!-- Step 3D: 収集品（高級） -->
             <div id="step3d" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
@@ -474,7 +469,7 @@
                 <div class="calculation-help">
                     <h4>💎 譲渡所得の計算</h4>
                     <strong>譲渡所得 = 売却価格 - 購入価格 - 譲渡費用</strong><br>
-                    特別控除：50万円まで非課税
+                    ※この所得には年間50万円の特別控除があります。
                 </div>
                 <div class="answer-section">
                     <button class="answer-button yes" onclick="showResult('collectible-gain')">利益が出た</button>
@@ -482,13 +477,12 @@
                 </div>
             </div>
 
-            <!-- Step 4A: 会社員の利益確認 -->
             <div id="step4a" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
-                    <strong>【STEP 4A】年間の利益はいくらですか？</strong>
+                    <strong>【STEP 4A】年間の利益（所得）はいくらですか？</strong>
                     <div class="explanation">
-                        売上から経費を引いた純利益で判定します
+                        売上から経費を引いた純利益で判定します。他の副業収入があれば、それも合算してください。
                     </div>
                 </div>
                 <div class="calculation-help">
@@ -502,13 +496,12 @@
                 </div>
             </div>
 
-            <!-- Step 4B: 学生の働き方確認 -->
             <div id="step4b" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
                     <strong>【STEP 4B】アルバイトをしていますか？</strong>
                     <div class="explanation">
-                        勤労学生控除の適用可否を確認します
+                        アルバイト収入の有無で所得の基準が変わります
                     </div>
                 </div>
                 <div class="answer-section">
@@ -517,28 +510,25 @@
                 </div>
             </div>
 
-            <!-- Step 4C: 専業主婦の利益確認 -->
             <div id="step4c" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
-                    <strong>【STEP 4C】年間の利益はいくらですか？</strong>
+                    <strong>【STEP 4C】年間の利益（所得）はいくらですか？</strong>
                     <div class="explanation">
-                        2025年税制改正により基準が大幅変更されました
+                        2025年（令和7年）分からの税制改正で基礎控除額が変わります。
                     </div>
                 </div>
                 <div class="calculation-help">
-                    <h4>⚠️ 重要：2025年改正による変更</h4>
-                    <strong>2024年まで</strong>：48万円超で確定申告必要<br>
-                    <strong>2025年から</strong>：95万円超で確定申告必要<br>
-                    ※ただし配偶者控除への影響は別途確認要
+                    <h4>⚠️ 重要：2025年分からの税制改正</h4>
+                    所得税の**基礎控除額が48万円から58万円に引き上げ**られます。そのため、確定申告が必要になる基準も変わります。<br>
+                    ※この所得が48万円を超えると、配偶者控除に影響が出る場合があります。
                 </div>
                 <div class="answer-section">
-                    <button class="answer-button" onclick="showResult('housewife-safe')">95万円以下</button>
-                    <button class="answer-button yes" onclick="showResult('housewife-over')">95万円超</button>
+                    <button class="answer-button" onclick="showResult('housewife-safe')">58万円以下</button>
+                    <button class="answer-button yes" onclick="showResult('housewife-over')">58万円超</button>
                 </div>
             </div>
 
-            <!-- Step 4D: 個人事業主 -->
             <div id="step4d" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
@@ -550,12 +540,7 @@
                 <div class="income-classification">
                     <div class="classification-title">📊 所得区分判定チェック</div>
                     <div class="classification-criteria">
-                        <strong>事業所得の条件（すべて満たす必要）：</strong><br>
-                        ✅ 適切な帳簿を作成・保存している<br>
-                        ✅ 継続的・反復的に行っている<br>
-                        ✅ 営利性・有償性がある<br>
-                        ✅ 社会的地位（職業）として認められる規模<br>
-                        ✅ 生活の糧となっている（または目指している）
+                        <strong>事業所得と認められるには、帳簿の作成・保存が必須条件</strong>です。その上で、活動の営利性・継続性・規模などを総合的に判断します。
                     </div>
                     <div class="vs-comparison">
                         <div class="business-income">
@@ -575,86 +560,24 @@
                     </div>
                 </div>
                 <div class="answer-section">
-                    <button class="answer-button yes" onclick="nextStep(4, 'business-income-check')">事業所得の条件を満たす</button>
-                    <button class="answer-button" onclick="nextStep(4, 'misc-income-check')">雑所得が適切</button>
-                    <button class="answer-button" onclick="nextStep(4, 'unclear-classification')">判断が難しい</button>
+                    <button class="answer-button yes" onclick="showResult('business-income-complete')">帳簿があり事業と断言できる</button>
+                    <button class="answer-button" onclick="showResult('misc-income-over20')">帳簿がなく雑所得になる</button>
                 </div>
             </div>
-
-            <!-- Step 5C: 事業所得確定の場合 -->
-            <div id="step5c" class="hidden">
-                <div class="arrow"></div>
-                <div class="question-box">
-                    <strong>【STEP 5C】帳簿の作成状況を確認</strong>
-                    <div class="explanation">
-                        2022年改正により帳簿保存が事業所得認定の必須条件になりました
-                    </div>
-                </div>
-                <div class="info-box">
-                    📚 <strong>必要な帳簿レベル：</strong><br>
-                    <strong>青色申告65万円控除</strong>：複式簿記+貸借対照表<br>
-                    <strong>青色申告55万円控除</strong>：複式簿記のみ<br>
-                    <strong>青色申告10万円控除</strong>：簡易簿記
-                </div>
-                <div class="answer-section">
-                    <button class="answer-button yes" onclick="showResult('business-income-complete')">適切な帳簿を作成済み</button>
-                    <button class="answer-button" onclick="showResult('business-income-improving')">帳簿作成を開始したい</button>
-                </div>
-            </div>
-
-            <!-- Step 5D: 雑所得確定の場合 -->
-            <div id="step5d" class="hidden">
-                <div class="arrow"></div>
-                <div class="question-box">
-                    <strong>【STEP 5D】年間の利益はいくらですか？</strong>
-                    <div class="explanation">
-                        雑所得でも申告基準があります
-                    </div>
-                </div>
-                <div class="answer-section">
-                    <button class="answer-button" onclick="showResult('misc-income-under20')">20万円以下</button>
-                    <button class="answer-button yes" onclick="showResult('misc-income-over20')">20万円超</button>
-                </div>
-            </div>
-
-            <!-- Step 5E: 判定が難しい場合 -->
-            <div id="step5e" class="hidden">
-                <div class="arrow"></div>
-                <div class="question-box">
-                    <strong>【STEP 5E】より具体的な状況を教えてください</strong>
-                    <div class="explanation">
-                        具体的な活動内容で判定します
-                    </div>
-                </div>
-                <div class="examples-list">
-                    <strong>事業所得になりやすいケース：</strong>
-                    <ul>
-                        <li>月10件以上の継続的販売</li>
-                        <li>仕入れ→販売の明確なビジネスモデル</li>
-                        <li>販売専用の作業場所がある</li>
-                        <li>屋号で活動している</li>
-                    </ul>
-                </div>
-                <div class="answer-section">
-                    <button class="answer-button yes" onclick="showResult('business-borderline')">上記に複数該当</button>
-                    <button class="answer-button" onclick="showResult('misc-borderline')">該当項目が少ない</button>
-                </div>
-            </div>
-
-            <!-- Step 5A: 学生（バイトあり）の利益確認 -->
+            
             <div id="step5a" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
-                    <strong>【STEP 5A】販売の年間利益はいくらですか？</strong>
+                    <strong>【STEP 5A】販売による年間利益はいくらですか？</strong>
                     <div class="explanation">
                         勤労学生控除の適用範囲を確認します
                     </div>
                 </div>
                 <div class="calculation-help">
                     <h4>🎓 勤労学生控除の条件</h4>
-                    <strong>年間合計所得75万円以下</strong>（給与収入130万円以下）<br>
-                    <strong>勤労以外所得10万円以下</strong><br>
-                    → 販売利益は「勤労以外所得」に該当
+                    「勤労によらない所得（メルカリなど）」が<strong>10万円以下</strong>であることが条件の一つです。<br>
+                    ※2025年分から、控除全体の所得要件は<strong>合計85万円以下</strong>に緩和されます。<br>
+                    <strong>給与収入のみなら概ね140万円以下</strong>が目安（収入 − 給与所得控除55万円 ＝ 85万円）。
                 </div>
                 <div class="answer-section">
                     <button class="answer-button" onclick="showResult('student-work-safe')">10万円以下</button>
@@ -662,22 +585,25 @@
                 </div>
             </div>
 
-            <!-- Step 5B: 学生（バイトなし）の利益確認 -->
             <div id="step5b" class="hidden">
                 <div class="arrow"></div>
                 <div class="question-box">
-                    <strong>【STEP 5B】年間の利益はいくらですか？</strong>
+                    <strong>【STEP 5B】年間の利益（所得）はいくらですか？</strong>
                     <div class="explanation">
-                        バイトをしていない学生の場合の基準です
+                        バイトをしていない学生の場合、基礎控除額が基準になります。
                     </div>
                 </div>
+                 <div class="calculation-help">
+                    <h4>⚠️ 重要：2025年分からの税制改正</h4>
+                    所得税の<strong>基礎控除額が48万円から58万円に引き上げ</strong>られます。<br>
+                    ※所得が58万円を超えると、親の扶養からも外れるため、家族の税金に大きな影響が出ます。必ず事前に相談してください。
+                </div>
                 <div class="answer-section">
-                    <button class="answer-button" onclick="showResult('student-nowork-safe')">95万円以下</button>
-                    <button class="answer-button yes" onclick="showResult('student-nowork-over')">95万円超</button>
+                    <button class="answer-button" onclick="showResult('student-nowork-safe')">58万円以下</button>
+                    <button class="answer-button yes" onclick="showResult('student-nowork-over')">58万円超</button>
                 </div>
             </div>
 
-            <!-- 結果表示エリア -->
             <div id="results" class="hidden">
                 <div class="arrow"></div>
                 <div id="result-content"></div>
@@ -689,7 +615,7 @@
     <script>
         function nextStep(currentStep, choice) {
             hideAllSteps();
-            
+           
             if (currentStep === 1) {
                 if (choice === 'lifestyle') {
                     document.getElementById('step2a').classList.remove('hidden');
@@ -731,24 +657,18 @@
                     document.getElementById('step5a').classList.remove('hidden');
                 } else if (choice === 'student-nowork') {
                     document.getElementById('step5b').classList.remove('hidden');
-                } else if (choice === 'business-income-check') {
-                    document.getElementById('step5c').classList.remove('hidden');
-                } else if (choice === 'misc-income-check') {
-                    document.getElementById('step5d').classList.remove('hidden');
-                } else if (choice === 'unclear-classification') {
-                    document.getElementById('step5e').classList.remove('hidden');
                 }
             }
         }
 
         function showResult(resultType) {
             hideAllSteps();
-            
+           
             const results = document.getElementById('results');
             const content = document.getElementById('result-content');
-            
+           
             let resultHTML = '';
-            
+           
             switch (resultType) {
                 case 'lifestyle-safe':
                     resultHTML = `
@@ -760,236 +680,9 @@
                             <strong>理由：</strong>日常生活で使用していた物品（生活用動産）の売却は所得税法により非課税と規定されています。確定申告も住民税申告も不要です。
                             <br><br><strong>対象例：</strong>古着、家具、家電、書籍、CD、通勤用自動車など
                         </div>
-                        <div class="action-plan">
-                            <h4>📋 今後の注意点</h4>
-                            <div class="action-step">
-                                <strong>記録の保存：</strong>念のため売却記録（商品名、売却日、金額）を保存しておきましょう
-                            </div>
-                            <div class="action-step">
-                                <strong>販売スタイルの確認：</strong>今後も「純粋な不用品処分」の範囲を超えないよう注意
-                            </div>
-                            <div class="action-step">
-                                <strong>高額品への注意：</strong>30万円を超える物品を売る際は事前に確認を
-                            </div>
-                        </div>
                     `;
                     break;
-
-                case 'business-income-complete':
-                    resultHTML = `
-                        <div class="result-box required">
-                            <strong>🏢 事業所得として確定申告</strong><br>
-                            最大限の節税メリットを活用しましょう
-                        </div>
-                        <div class="explanation">
-                            <strong>おめでとうございます！</strong>適切な帳簿管理により事業所得として認定されます。青色申告特別控除、損益通算など多くのメリットを受けられます。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 事業所得フル活用のアクション</h4>
-                            <div class="deadline-warning">
-                                ⏰ 確定申告期限：翌年3月15日まで
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 1：青色申告控除の最大化</strong><br>
-                                ・e-Tax + 複式簿記 + 貸借対照表 → <strong>65万円控除</strong><br>
-                                ・複式簿記のみ → 55万円控除<br>
-                                ・簡易簿記 → 10万円控除
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：必要経費の最大活用</strong><br>
-                                ・家事按分（家賃、光熱費、通信費）<br>
-                                ・減価償却（PC、カメラ、什器等）<br>
-                                ・外注費、広告宣伝費、研修費
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：損益通算の活用</strong><br>
-                                事業が赤字の場合、給与所得等と相殺して還付を受ける
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 4：各種制度の活用</strong><br>
-                                ・小規模企業共済（月7万円まで全額控除）<br>
-                                ・経営セーフティ共済（月20万円まで）<br>
-                                ・iDeCo（月6.8万円まで）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 5：来年の準備</strong><br>
-                                ・帳簿の継続的更新<br>
-                                ・決算業務の準備<br>
-                                ・税理士との連携検討
-                            </div>
-                        </div>
-                    `;
-                    break;
-
-                case 'business-income-improving':
-                    resultHTML = `
-                        <div class="result-box required">
-                            <strong>📈 事業所得移行の準備段階</strong><br>
-                            適切な帳簿作成で大幅節税を実現
-                        </div>
-                        <div class="explanation">
-                            <strong>チャンス！</strong>適切な帳簿を作成することで事業所得として認定され、大幅な節税が可能になります。今年は雑所得、来年から事業所得を目指しましょう。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 事業所得移行のロードマップ</h4>
-                            <div class="deadline-warning">
-                                ⏰ 今年の確定申告：翌年3月15日まで（雑所得として）<br>
-                                ⏰ 青色申告承認申請：翌年3月15日まで（来年分から）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 1：今年の申告（雑所得）</strong><br>
-                                帳簿が不十分なため、今年は雑所得として申告
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：帳簿作成システムの構築（最重要）</strong><br>
-                                ・会計ソフト導入（freee、弥生、マネーフォワード等）<br>
-                                ・クレジットカード・銀行口座の事業専用化<br>
-                                ・レシート管理システムの確立
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：開業手続き</strong><br>
-                                ・個人事業開業届出書の提出<br>
-                                ・青色申告承認申請書の提出（3/15まで）<br>
-                                ・屋号の設定検討
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 4：帳簿作成の実践</strong><br>
-                                ・日々の取引記録開始<br>
-                                ・月次での収支確認<br>
-                                ・複式簿記の学習（65万円控除のため）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 5：来年の大幅節税実現</strong><br>
-                                適切な帳簿により事業所得認定 → 青色申告控除最大65万円
-                            </div>
-                        </div>
-                    `;
-                    break;
-
-                case 'misc-income-under20':
-                    resultHTML = `
-                        <div class="result-box partial">
-                            <strong>📋 所得税：申告不要</strong><br>
-                            <strong class="highlight">⚠️ 住民税：申告必要</strong>
-                        </div>
-                        <div class="explanation">
-                            <strong>雑所得20万円以下：</strong>所得税の確定申告は不要ですが、住民税申告は必要です。
-                            <br><br><strong>注意：</strong>雑所得のため損益通算はできません。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 雑所得申告のアクション</h4>
-                            <div class="action-step">
-                                <strong>Step 1：住民税申告</strong><br>
-                                市区町村に雑所得として申告（期限：3/15）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：必要経費の計上</strong><br>
-                                ・販売手数料、送料、梱包材費<br>
-                                ・直接的な仕入代金（家事按分は不可）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：事業化の検討</strong><br>
-                                継続的な利益が見込めるなら帳簿作成による事業所得移行を検討
-                            </div>
-                        </div>
-                    `;
-                    break;
-
-                case 'misc-income-over20':
-                    resultHTML = `
-                        <div class="result-box required">
-                            <strong>📋 雑所得として確定申告</strong><br>
-                            控除・損益通算なしで税負担重
-                        </div>
-                        <div class="explanation">
-                            <strong>雑所得の制限：</strong>青色申告控除なし、損益通算不可、経費の範囲も限定的です。
-                            <br><br><strong>改善策：</strong>適切な帳簿作成により事業所得への移行を強く推奨します。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 雑所得申告＋改善のアクション</h4>
-                            <div class="deadline-warning">
-                                ⏰ 確定申告期限：翌年3月15日まで
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 1：今年の雑所得申告</strong><br>
-                                ・確定申告書Bを使用<br>
-                                ・雑所得欄に収入・必要経費を記載<br>
-                                ・収支内訳書の添付
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：税負担の確認</strong><br>
-                                ・所得税率：5%〜45%（総所得により決定）<br>
-                                ・住民税：約10%<br>
-                                ・国民健康保険料への影響も確認
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：事業所得移行の準備（強く推奨）</strong><br>
-                                ・会計ソフト導入<br>
-                                ・適切な帳簿作成開始<br>
-                                ・青色申告承認申請書提出（3/15まで）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 4：節税効果の試算</strong><br>
-                                事業所得移行により最大65万円控除 → 年間約20万円の節税効果
-                            </div>
-                        </div>
-                    `;
-                    break;
-
-                case 'business-borderline':
-                    resultHTML = `
-                        <div class="result-box required">
-                            <strong>⚖️ 事業所得の可能性高</strong><br>
-                            適切な準備で事業所得認定を目指す
-                        </div>
-                        <div class="explanation">
-                            <strong>ボーダーライン：</strong>活動規模からは事業所得の可能性が高いですが、帳簿保存等の要件を満たす必要があります。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 事業所得確定のアクション</h4>
-                            <div class="action-step">
-                                <strong>Step 1：帳簿要件の確認</strong><br>
-                                適切な帳簿保存ができているか再確認
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：事業実態の整備</strong><br>
-                                ・事業用口座の分離<br>
-                                ・屋号での活動<br>
-                                ・事業計画書の作成
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：税理士相談</strong><br>
-                                事業所得認定の可能性について専門家に相談
-                            </div>
-                        </div>
-                    `;
-                    break;
-
-                case 'misc-borderline':
-                    resultHTML = `
-                        <div class="result-box required">
-                            <strong>📝 雑所得として申告</strong><br>
-                            将来の事業化を検討
-                        </div>
-                        <div class="explanation">
-                            <strong>現状判定：</strong>事業的規模には達していないため雑所得として申告し、将来の事業化を検討しましょう。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 雑所得申告＋将来準備</h4>
-                            <div class="action-step">
-                                <strong>Step 1：雑所得として申告</strong><br>
-                                今年は雑所得として確定申告
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：事業化の準備</strong><br>
-                                ・規模拡大の計画策定<br>
-                                ・帳簿作成の開始<br>
-                                ・事業実態の充実
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
+                
                 case 'lifestyle-expensive':
                     resultHTML = `
                         <div class="result-box required">
@@ -1000,31 +693,9 @@
                             <strong>理由：</strong>1個または1組30万円を超える物品の売却は、生活用動産であっても譲渡所得として課税対象になります。
                             <br><br><strong>計算方法：</strong>譲渡所得 = 売却価格 - 購入価格 - 譲渡費用（50万円の特別控除あり）
                         </div>
-                        <div class="action-plan">
-                            <h4>🚀 必要なアクション</h4>
-                            <div class="deadline-warning">
-                                ⏰ 申告期限：翌年3月15日まで
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 1：書類準備</strong><br>
-                                ・売却時の契約書、領収書<br>
-                                ・購入時の領収書、証明書類<br>
-                                ・譲渡費用の領収書（手数料、送料等）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：所得計算</strong><br>
-                                譲渡所得 = 売却価格 - 取得費 - 譲渡費用 - 50万円（特別控除）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：申告方法選択</strong><br>
-                                ・e-Tax（オンライン申告）<br>
-                                ・税務署窓口での申告<br>
-                                ・税理士への依頼（複雑な場合）
-                            </div>
-                        </div>
                     `;
                     break;
-                    
+               
                 case 'collectible-gain':
                     resultHTML = `
                         <div class="result-box required">
@@ -1035,37 +706,9 @@
                             <strong>理由：</strong>「生活に通常必要でない動産」の売却で利益が出た場合は譲渡所得として課税されます。
                             <br><br><strong>特別控除：</strong>年間50万円まで控除あり。複数の譲渡がある場合は合算して判定します。
                         </div>
-                        <div class="action-plan">
-                            <h4>🚀 譲渡所得申告のアクション</h4>
-                            <div class="deadline-warning">
-                                ⏰ 確定申告期限：翌年3月15日まで
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 1：譲渡所得の正確な計算</strong><br>
-                                ・所得 = 売却価格 - 取得費 - 譲渡費用<br>
-                                ・年間合計で50万円特別控除適用<br>
-                                ・複数品目がある場合は全て合算
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：必要書類の整理</strong><br>
-                                ・購入時の領収書、証明書<br>
-                                ・売却時の取引記録<br>
-                                ・譲渡費用の証拠書類（手数料等）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：申告書の作成</strong><br>
-                                ・確定申告書第三表（分離課税用）使用<br>
-                                ・譲渡所得の内訳書作成<br>
-                                ・税率：短期20.315%、長期20.315%
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 4：今後の取引記録</strong><br>
-                                継続的に収集品を売買する場合は詳細な記録保存
-                            </div>
-                        </div>
                     `;
                     break;
-                    
+               
                 case 'collectible-loss':
                     resultHTML = `
                         <div class="result-box not-required">
@@ -1075,105 +718,21 @@
                         <div class="explanation">
                             <strong>理由：</strong>売却価格が購入価格以下の場合、譲渡所得は発生しないため申告不要です。譲渡損失は他の所得と損益通算できません。
                         </div>
-                        <div class="action-plan">
-                            <h4>📋 記録保存のアクション</h4>
-                            <div class="action-step">
-                                <strong>取引記録の保存：</strong>将来の売却や税務調査に備え、購入・売却記録を保存
-                            </div>
-                            <div class="action-step">
-                                <strong>損失の確認：</strong>他に利益の出た譲渡がないか年間で確認
-                            </div>
-                        </div>
                     `;
                     break;
-
-                case 'student-work-safe':
-                    resultHTML = `
-                        <div class="result-box partial">
-                            <strong>📋 所得税：申告不要の可能性</strong><br>
-                            <strong class="highlight">⚠️ 住民税：申告必要</strong>
-                        </div>
-                        <div class="explanation">
-                            <strong>勤労学生控除：</strong>販売利益10万円以下なら控除範囲内の可能性が高いです。
-                            <br><br><strong>確認要：</strong>バイト収入との合計が130万円以下かご確認ください。住民税申告は必要です。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 必要なアクション</h4>
-                            <div class="action-step">
-                                <strong>Step 1：勤労学生控除の確認</strong><br>
-                                バイト収入（年130万円以下）+ 販売利益（10万円以下）の条件確認
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：住民税申告</strong><br>
-                                市区町村に雑所得として申告（期限：3/15）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：扶養状況の確認</strong><br>
-                                家族の扶養控除に影響がないか確認
-                            </div>
-                        </div>
-                    `;
-                    break;
-
-                case 'student-nowork-over':
-                    resultHTML = `
-                        <div class="result-box required">
-                            <strong>📋 確定申告が必要です</strong><br>
-                            基礎控除額を超えました
-                        </div>
-                        <div class="explanation">
-                            <strong>理由：</strong>95万円を超える場合は確定申告が必要です。
-                            <br><br><strong>重要：</strong>扶養控除の対象から外れるため、家族の税金に大きな影響があります。必ず家族と相談してください。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 緊急アクション</h4>
-                            <div class="deadline-warning">
-                                ⏰ 確定申告期限：翌年3月15日まで
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 1：家族会議（最優先）</strong><br>
-                                扶養控除（63万円）喪失による家族の税額増加を確認・相談
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：確定申告実施</strong><br>
-                                雑所得または事業所得として申告
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：事業化の検討</strong><br>
-                                継続予定なら個人事業開業・青色申告の検討
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
+                
                 case 'collectible-normal':
                     resultHTML = `
                         <div class="result-box partial">
-                            <strong>📋 雑所得として判定</strong><br>
-                            営利目的なら申告が必要です
+                            <strong>⚖️ 判定が分かれます</strong><br>
+                            営利目的・継続性があれば課税対象
                         </div>
                         <div class="explanation">
-                            <strong>判定：</strong>通常の生活用品に近い収集品の場合、営利性・継続性により雑所得または非課税に分類されます。具体的な状況により判断が必要です。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 詳細判定とアクション</h4>
-                            <div class="action-step">
-                                <strong>Step 1：営利性の再確認</strong><br>
-                                ・継続的・反復的販売 → 雑所得<br>
-                                ・単発の処分 → 非課税の可能性
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：所得計算</strong><br>
-                                営利目的と判定される場合は所得金額に応じて申告
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：専門家相談</strong><br>
-                                判定が微妙な場合は税務署または税理士に相談
-                            </div>
+                            <strong>判定：</strong>収集品が「生活に通常必要でない動産」に該当しない場合、その売却が営利目的で継続的に行われていれば「雑所得」として課税対象になります。単なる不用品処分であれば非課税です。最初のSTEP1に戻り「営利目的」か「生活用品の処分」か、ご自身の状況に近い方を選択してください。
                         </div>
                     `;
                     break;
-                    
+
                 case 'employee-under20':
                     resultHTML = `
                         <div class="result-box partial">
@@ -1186,309 +745,150 @@
                         </div>
                         <div class="action-plan">
                             <h4>🚀 必要なアクション</h4>
-                            <div class="deadline-warning">
-                                ⏰ 住民税申告期限：翌年3月15日まで
-                            </div>
                             <div class="action-step">
-                                <strong>Step 1：申告先確認</strong><br>
-                                お住まいの市区町村役場の税務課に申告
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：必要書類準備</strong><br>
-                                ・給与所得の源泉徴収票<br>
-                                ・販売収支の明細（売上、経費の内訳）<br>
-                                ・各種領収書、取引記録
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：収支計算</strong><br>
-                                雑所得 = 売上 - 必要経費（手数料、送料、仕入代金等）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 4：申告書作成</strong><br>
-                                市区町村のHPから住民税申告書をダウンロード、または窓口で入手
+                                <strong>住民税の申告：</strong>お住まいの市区町村役場の税務課に、雑所得があった旨を申告します。（期限：原則3月15日）
                             </div>
                         </div>
                     `;
                     break;
-                    
+               
                 case 'employee-over20':
+                case 'medium-scale':
                     resultHTML = `
                         <div class="result-box required">
                             <strong>📋 確定申告が必要です</strong><br>
-                            20万円を超えたため申告義務があります
+                            20万円を超える所得は申告義務があります
                         </div>
                         <div class="explanation">
-                            <strong>理由：</strong>給与所得者で副業所得が20万円を超える場合は確定申告が必要です。
-                            <br><br><strong>所得区分：</strong>継続的な営利活動なら雑所得、本格的事業なら事業所得として申告
+                            <strong>理由：</strong>所得が20万円を超える場合は確定申告が必要です。
+                            <br><br><strong>所得区分：</strong>帳簿を付けていなければ「雑所得」、帳簿があり事業として活動していれば「事業所得」として申告します。
                         </div>
                         <div class="action-plan">
                             <h4>🚀 必要なアクション</h4>
-                            <div class="deadline-warning">
-                                ⏰ 確定申告期限：翌年3月15日まで
-                            </div>
+                             <div class="deadline-warning">⏰ 確定申告期限：翌年3月15日まで</div>
                             <div class="action-step">
-                                <strong>Step 1：所得区分の最終判定</strong><br>
-                                継続的・本格的 → 事業所得（要帳簿）<br>
-                                副業レベル → 雑所得
+                                <strong>申告準備：</strong>年間の売上と経費をまとめ、所得額を計算します。給与所得者は源泉徴収票も必要です。
                             </div>
-                            <div class="action-step">
-                                <strong>Step 2：必要書類準備</strong><br>
-                                ・給与所得の源泉徴収票<br>
-                                ・年間の売上・経費明細<br>
-                                ・各種領収書、取引記録
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：申告方法選択</strong><br>
-                                ・e-Tax（24時間利用可、控除額大）<br>
-                                ・税務署窓口申告<br>
-                                ・税理士依頼（本格事業の場合）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 4：来年への準備</strong><br>
-                                事業拡大予定なら青色申告承認申請書の提出を検討（3/15まで）
+                             <div class="action-step">
+                                <strong>申告書の作成・提出：</strong>国税庁の「確定申告書等作成コーナー」を利用して作成し、e-Tax、郵送、または税務署窓口で提出します。
                             </div>
                         </div>
                     `;
                     break;
-                    
+               
                 case 'housewife-safe':
-                    resultHTML = `
-                        <div class="result-box partial">
-                            <strong>📋 所得税：申告不要</strong><br>
-                            <strong class="highlight">⚠️ 住民税：申告必要</strong>
-                        </div>
-                        <div class="explanation">
-                            <strong>2025年改正効果：</strong>基礎控除の大幅増額により、95万円以下なら所得税申告は不要です。
-                            <br><br><strong>注意点：</strong>配偶者控除・扶養控除への影響は別途確認が必要です。住民税は金額に関わらず申告必要。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 必要なアクション</h4>
-                            <div class="deadline-warning">
-                                ⏰ 住民税申告期限：翌年3月15日まで
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 1：配偶者控除への影響確認</strong><br>
-                                配偶者の年末調整・確定申告で控除額が変わる可能性をチェック
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：住民税申告準備</strong><br>
-                                ・市区町村役場で申告書入手<br>
-                                ・収支明細書作成<br>
-                                ・必要経費の証拠書類整理
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：今後の事業計画</strong><br>
-                                収入拡大予定なら事業届出や青色申告の検討開始
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 4：家族との情報共有</strong><br>
-                                配偶者の税理士・会社の経理担当に状況を報告
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'housewife-over':
-                    resultHTML = `
-                        <div class="result-box required">
-                            <strong>📋 確定申告が必要です</strong><br>
-                            基礎控除額を超えました
-                        </div>
-                        <div class="explanation">
-                            <strong>理由：</strong>2025年改正後も95万円を超える所得がある場合は確定申告が必要です。
-                            <br><br><strong>重要：</strong>配偶者控除の対象から外れる可能性があります。配偶者の税金への影響も確認してください。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 緊急アクション</h4>
-                            <div class="deadline-warning">
-                                ⏰ 確定申告期限：翌年3月15日まで
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 1：家族への影響確認（最優先）</strong><br>
-                                ・配偶者控除：年収150万円超で段階的減額<br>
-                                ・配偶者の税額増加の可能性<br>
-                                ・社会保険の扶養要件確認（年収130万円）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：事業届出の検討</strong><br>
-                                継続的事業なら個人事業開業届の提出（任意だが有利）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：青色申告の準備</strong><br>
-                                ・青色申告承認申請書提出（3/15まで）<br>
-                                ・複式簿記での帳簿作成開始<br>
-                                ・会計ソフトの導入検討
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 4：税理士相談の検討</strong><br>
-                                事業規模・家族への影響が大きい場合は専門家に相談
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'student-work-safe':
-                    resultHTML = `
-                        <div class="result-box partial">
-                            <strong>📋 所得税：申告不要の可能性</strong><br>
-                            <strong class="highlight">⚠️ 住民税：申告必要</strong>
-                        </div>
-                        <div class="explanation">
-                            <strong>勤労学生控除：</strong>販売利益10万円以下なら控除範囲内の可能性が高いです。
-                            <br><br><strong>確認要：</strong>バイト収入との合計が130万円以下かご確認ください。住民税申告は必要です。
-                        </div>
-                    `;
-                    break;
-                    
-                case 'student-work-over':
-                    resultHTML = `
-                        <div class="result-box required">
-                            <strong>📋 確定申告が必要です</strong><br>
-                            勤労学生控除の条件を超過
-                        </div>
-                        <div class="explanation">
-                            <strong>理由：</strong>販売利益10万円超により勤労学生控除の「勤労以外所得10万円以下」条件を満たしません。
-                            <br><br><strong>影響：</strong>扶養控除からも外れる可能性があります。家族の税金への影響も確認してください。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 緊急アクション（家族影響重大）</h4>
-                            <div class="deadline-warning">
-                                ⏰ 確定申告期限：翌年3月15日まで
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 1：家族への影響試算（最優先）</strong><br>
-                                ・扶養控除（63万円）の喪失可能性<br>
-                                ・親の税額増加を試算<br>
-                                ・家族の健康保険扶養への影響確認
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：家族会議の実施</strong><br>
-                                ・税額増加と販売利益を比較検討<br>
-                                ・今後の販売継続可否を相談<br>
-                                ・扶養から外れる場合の対策検討
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：確定申告の実施</strong><br>
-                                ・雑所得として申告<br>
-                                ・必要経費の適切な計上<br>
-                                ・勤労学生控除の適用可否確認
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 4：来年の計画策定</strong><br>
-                                扶養内に抑えるか、本格的事業展開かの方針決定
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
                 case 'student-nowork-safe':
                     resultHTML = `
                         <div class="result-box partial">
                             <strong>📋 所得税：申告不要</strong><br>
-                            <strong class="highlight">⚠️ 住民税：申告必要</strong>
+                            <strong class="highlight">⚠️ 住民税：申告が必要な場合あり</strong>
                         </div>
                         <div class="explanation">
-                            <strong>理由：</strong>バイトなしで95万円以下なら所得税申告は不要です。
-                            <br><br><strong>注意：</strong>一定額超で扶養控除の対象から外れる可能性があります。家族と相談してください。
+                            <strong>理由：</strong>2025年分から基礎控除が58万円に引き上げられるため、所得が58万円以下なら所得税の申告は不要です。
+                            <br><br><strong>注意点：</strong>住民税の基礎控除は<strong>43万円（据え置き）</strong>です。所得水準によっては住民税の申告・課税が発生します。また、所得が一定額を超えると配偶者（親）の扶養から外れる可能性があります。
+                        </div>
+                         <div class="action-plan">
+                            <h4>🚀 必要なアクション</h4>
+                            <div class="action-step">
+                                <strong>住民税の申告：</strong>所得がある場合は、お住まいの市区町村役場に住民税の申告が必要か確認してください。
+                            </div>
                         </div>
                     `;
                     break;
-                    
+               
+                case 'housewife-over':
                 case 'student-nowork-over':
                     resultHTML = `
                         <div class="result-box required">
                             <strong>📋 確定申告が必要です</strong><br>
-                            基礎控除額を超えました
+                            基礎控除額（58万円）を超えました
                         </div>
                         <div class="explanation">
-                            <strong>理由：</strong>95万円を超える場合は確定申告が必要です。
-                            <br><br><strong>重要：</strong>扶養控除の対象から外れるため、家族の税金に大きな影響があります。必ず家族と相談してください。
+                            <strong>理由：</strong>所得が58万円を超える場合は確定申告が必要です。
+                            <br><br><strong>最重要：</strong>この所得額では配偶者（親）の税法上の扶養から外れる可能性があります。家族の税負担が増える場合があるため、必ず事前に家族と相談してください。
+                        </div>
+                         <div class="action-plan">
+                            <h4>🚀 必要なアクション</h4>
+                             <div class="deadline-warning">⏰ 確定申告期限：翌年3月15日まで</div>
+                            <div class="action-step">
+                                <strong>家族と相談：</strong>扶養から外れることによる影響を共有し、理解を得ることが重要です。
+                            </div>
+                             <div class="action-step">
+                                <strong>確定申告：</strong>所得を計算し、期限内に申告・納税を行ってください。
+                            </div>
                         </div>
                     `;
                     break;
-                    
-                case 'business-proper':
+
+                case 'student-work-safe':
+                    resultHTML = `
+                        <div class="result-box partial">
+                            <strong>📋 所得税：申告不要の可能性大</strong><br>
+                            <strong class="highlight">⚠️ 住民税：申告必要</strong>
+                        </div>
+                        <div class="explanation">
+                            <strong>勤労学生控除：</strong>販売による利益が10万円以下で、アルバイト収入と合わせても<strong>合計所得85万円以下</strong>（<strong>給与収入のみなら概ね140万円以下</strong>）であれば、勤労学生控除の範囲内となり所得税はかかりません。
+                            <br><br><strong>注意：</strong>住民税の申告は別途必要です。
+                        </div>
+                    `;
+                    break;
+
+                case 'student-work-over':
                     resultHTML = `
                         <div class="result-box required">
-                            <strong>📋 事業所得として確定申告</strong><br>
-                            青色申告控除の恩恵を受けられます
+                            <strong>📋 確定申告が必要です</strong><br>
+                            勤労学生控除の条件を超えました
                         </div>
                         <div class="explanation">
-                            <strong>メリット：</strong>適切な帳簿保存により事業所得として認定されます。青色申告特別控除（最大65万円）、損益通算が可能です。
-                            <br><br><strong>注意：</strong>事業的規模でない場合は雑所得扱いになる可能性もあります。
-                        </div>
-                        <div class="action-plan">
-                            <h4>🚀 優遇制度活用のアクション</h4>
-                            <div class="deadline-warning">
-                                ⏰ 確定申告期限：翌年3月15日まで
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 1：青色申告特別控除の最大活用</strong><br>
-                                ・e-Tax申告 → 65万円控除<br>
-                                ・書面申告 → 55万円控除<br>
-                                ・簡易簿記 → 10万円控除
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：必要経費の最大活用</strong><br>
-                                ・家事按分費（通信費、光熱費等）<br>
-                                ・事業専用部分の家賃<br>
-                                ・減価償却費（PC、備品等）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：損益通算の活用</strong><br>
-                                事業が赤字の場合、他の所得（給与等）と相殺可能
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 4：来年への準備</strong><br>
-                                ・小規模企業共済の検討<br>
-                                ・経営セーフティ共済の検討<br>
-                                ・iDeCo加入の検討
-                            </div>
+                            <strong>理由：</strong>販売による利益が10万円を超えたため、勤労学生控除の条件から外れます。アルバイト収入と合算して確定申告が必要です。
+                             <br><br><strong>重要：</strong>合計所得が48万円（2025年分から58万円）を超えると親の扶養からも外れる可能性があるため、家族と必ず相談してください。
                         </div>
                     `;
                     break;
-                    
-                case 'business-no-books':
+                
+                case 'business-income-complete':
                     resultHTML = `
                         <div class="result-box required">
-                            <strong>📋 雑所得として確定申告</strong><br>
-                            帳簿なしのため控除は限定的
+                            <strong>🏢 事業所得として確定申告</strong><br>
+                            最大限の節税メリットを活用しましょう
                         </div>
                         <div class="explanation">
-                            <strong>2022年改正：</strong>帳簿保存がない場合は雑所得扱いになります。青色申告控除なし、損益通算も不可です。
-                            <br><br><strong>改善案：</strong>今から適切な帳簿を作成し、来年以降は事業所得での申告を目指しましょう。
+                            適切な帳簿管理により「事業所得」として申告できます。青色申告特別控除や損益通算など多くのメリットを受けられます。
                         </div>
                         <div class="action-plan">
-                            <h4>🚀 今年の申告＋来年への改善アクション</h4>
-                            <div class="deadline-warning">
-                                ⏰ 確定申告期限：翌年3月15日まで
+                            <h4>🚀 事業所得フル活用のアクション</h4>
+                            <div class="deadline-warning">⏰ 確定申告期限：翌年3月15日まで</div>
+                            <div class="action-step">
+                                <strong>青色申告の活用：</strong>e-Taxでの電子申告と複式簿記により、最大65万円の特別控除を目指しましょう。
                             </div>
                             <div class="action-step">
-                                <strong>Step 1：今年の雑所得申告</strong><br>
-                                ・雑所得として確定申告<br>
-                                ・必要経費は収支内訳書に記載<br>
-                                ・損益通算不可（赤字でも他所得と相殺不可）
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 2：来年のための帳簿作成開始（重要）</strong><br>
-                                ・会計ソフト導入（freee、弥生、マネーフォワード等）<br>
-                                ・日々の取引記録開始<br>
-                                ・レシート・領収書の整理システム構築
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 3：事業所得移行の準備</strong><br>
-                                ・個人事業開業届の提出検討<br>
-                                ・青色申告承認申請書の提出（3/15まで）<br>
-                                ・複式簿記の学習開始
-                            </div>
-                            <div class="action-step">
-                                <strong>Step 4：税理士相談</strong><br>
-                                帳簿作成方法や事業所得移行について専門家に相談
+                                <strong>必要経費の計上：</strong>家賃や通信費の家事按分、備品の減価償却など、事業に関連する費用を漏れなく経費として計上します。
                             </div>
                         </div>
                     `;
                     break;
-                    
+
+                case 'misc-income-over20':
+                     resultHTML = `
+                        <div class="result-box required">
+                            <strong>📝 雑所得として確定申告</strong><br>
+                            節税メリットが限定的です
+                        </div>
+                        <div class="explanation">
+                           <strong>理由：</strong>帳簿の保存がない場合、所得は「雑所得」として扱われます。この場合、青色申告控除や赤字の損益通算はできません。
+                        </div>
+                        <div class="action-plan">
+                            <h4>🚀 今後の改善アクション</h4>
+                            <div class="action-step">
+                                <strong>今年の申告：</strong>まずは雑所得として期限内に確定申告を済ませましょう。
+                            </div>
+                            <div class="action-step">
+                                <strong>来年に向けて：</strong>継続的に利益が見込めるなら、会計ソフトを導入して帳簿作成を始め、「事業所得」での申告を目指すことを強く推奨します。
+                            </div>
+                        </div>
+                    `;
+                    break;
+
                 case 'small-scale':
                     resultHTML = `
                         <div class="result-box partial">
@@ -1496,35 +896,24 @@
                             <strong class="highlight">⚠️ 住民税：申告必要</strong>
                         </div>
                         <div class="explanation">
-                            <strong>理由：</strong>小規模で20万円以下の場合、給与所得者の副業と同じ扱いになります。
-                            <br><br><strong>所得区分：</strong>雑所得として住民税申告が必要です。
-                        </div>
-                    `;
-                    break;
-                    
-                case 'medium-scale':
-                    resultHTML = `
-                        <div class="result-box required">
-                            <strong>📋 確定申告が必要です</strong><br>
-                            雑所得として申告してください
-                        </div>
-                        <div class="explanation">
-                            <strong>理由：</strong>20万円を超える所得があるため確定申告が必要です。
-                            <br><br><strong>所得区分：</strong>本格的事業でなければ雑所得扱いになります。帳簿作成により事業所得への変更も検討しましょう。
+                            <strong>理由：</strong>時々・小規模な販売による利益（雑所得）が20万円以下の場合、給与所得者の副業と同じく、所得税の確定申告は不要です。ただし、住民税の申告は必要です。
                         </div>
                     `;
                     break;
             }
-            
+           
             content.innerHTML = resultHTML;
             results.classList.remove('hidden');
         }
 
         function hideAllSteps() {
             const steps = ['step2a', 'step2b', 'step2c', 'step3a', 'step3b', 'step3c', 'step3d', 
-                          'step4a', 'step4b', 'step4c', 'step4d', 'step5a', 'step5b', 'step5c', 'step5d', 'step5e', 'results'];
+                         'step4a', 'step4b', 'step4c', 'step4d', 'step5a', 'step5b', 'results'];
             steps.forEach(step => {
-                document.getElementById(step).classList.add('hidden');
+                const element = document.getElementById(step);
+                if (element) {
+                    element.classList.add('hidden');
+                }
             });
         }
 
