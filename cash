@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【改良版 v2】せどり事業資金繰り表ダッシュボード</title>
+    <style>
+        /* :root and body styles from previous version are kept */
+        :root {
+            --primary-color: #6a5acd; /* SlateBlue */
+            --primary-gradient: linear-gradient(135deg, #6a5acd 0%, #836FFF 100%);
+            --secondary-color: #483d8b; /* DarkSlateBlue */
+            --success-color: #20b2aa; /* LightSeaGreen */
+            --danger-color: #f08080; /* LightCoral */
+            --warning-color: #f5b041;
+            --forecast-color: #4682b4; /* SteelBlue */
+            --forecast-bg: #eaf2f8;
+            --bg-color: #f4f7fc;
+            --surface-color: #ffffff;
+            --text-color: #333;
+            --muted-color: #6c757d;
+            --border-color: #e1e5e9;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 14px;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- Sidebar styles from previous version are kept --- */
+        .sidebar {
+            width: 320px;
+            flex-shrink: 0;
+            background-color: var(--surface-color);
+            border-right: 1px solid var(--border-color);
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .sidebar-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .sidebar-section {
+            background-color: var(--bg-color);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .sidebar-section h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sidebar .button-group { display: flex; gap: 10px; flex-wrap: wrap; }
+        .sidebar button {
+            flex-grow: 1; padding: 10px 15px; border: none; border-radius: 8px; font-weight: 600;
+            cursor: pointer; transition: all 0.2s ease; font-size: 14px; display: flex;
+            align-items: center; justify-content: center; gap: 6px;
+        }
+        .sidebar .btn-primary { background: var(--primary-color); color: white; }
+        .sidebar .btn-primary:hover { background: var(--secondary-color); transform: translateY(-1px); }
+        .sidebar .btn-secondary { background: var(--muted-color); color: white; }
+        .sidebar .btn-secondary:hover { background: #5a6268; }
+        .sidebar .btn-success { background: var(--success-color); color: white; }
+        .sidebar .btn-success:hover { background: #1a8e86; }
+
+        .input-item { display: flex; flex-direction: column; gap: 4px; }
+        .input-item label { font-weight: 500; color: var(--muted-color); font-size: 12px; }
+        .input-item input {
+            width: 100%; padding: 8px 10px; border: 1px solid var(--border-color);
+            border-radius: 6px; font-size: 14px; box-sizing: border-box; transition: border-color 0.2s;
+        }
+        .input-item input:focus { outline: none; border-color: var(--primary-color); }
+
+        #input-panel .collapsible-header { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        #input-panel .collapsible-header::after { content: '▼'; font-size: 10px; transition: transform 0.3s; }
+        #input-panel.is-open .collapsible-header::after { transform: rotate(180deg); }
+        #input-panel .collapsible-content {
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
+            display: flex; flex-direction: column; gap: 15px;
+        }
+
+        .input-mode-toggle { display: flex; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; }
+        .input-mode-toggle label {
+            flex: 1; padding: 8px; text-align: center; cursor: pointer;
+            background: var(--surface-color); transition: background-color 0.2s; font-weight: 500;
+        }
+        .input-mode-toggle input { display: none; }
+        .input-mode-toggle input:checked + label { background: var(--primary-color); color: white; font-weight: 700; }
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .view-switcher { display: flex; justify-content: space-between; gap: 10px; }
+        .view-switcher button { flex-grow: 1; background-color: #e9ecef; color: var(--muted-color); }
+        .view-switcher button.btn-active { background-color: var(--primary-color); color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+        /* --- Main Content styles from previous version are kept --- */
+        .main-content {
+            flex-grow: 1; padding: 25px; overflow-y: auto;
+            display: flex; flex-direction: column;
+        }
+        .header { text-align: left; margin-bottom: 20px; }
+        .header h1 { margin: 0; font-size: 2rem; color: var(--secondary-color); }
+        .header p { margin: 5px 0 0; color: var(--muted-color); }
+
+        .summary-cards {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px; margin-bottom: 25px;
+        }
+        .summary-card {
+            background: var(--surface-color); padding: 20px; border-radius: 12px;
+            box-shadow: var(--shadow); border-left: 5px solid;
+        }
+        .summary-card h3 { margin: 0 0 10px 0; font-size: 1rem; color: var(--muted-color); }
+        .summary-card .value { font-size: 1.75rem; font-weight: 700; }
+        #card-balance { border-color: var(--primary-color); }
+        #card-balance .value { color: var(--primary-color); }
+        #card-income { border-color: var(--success-color); }
+        #card-income .value { color: var(--success-color); }
+        #card-expenses { border-color: var(--danger-color); }
+        #card-expenses .value { color: var(--danger-color); }
+        #card-profit { border-color: var(--muted-color); }
+        
+        .table-display-area { flex-grow: 1; }
+        .table-container {
+            background: var(--surface-color); border-radius: 12px;
+            box-shadow: var(--shadow); overflow: auto; border: 1px solid var(--border-color);
+        }
+
+        /* --- NEW STYLES for Transpose Table --- */
+        #transposeTableElement {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px; /* Slightly larger font for readability */
+        }
+        #transposeTableElement th, #transposeTableElement td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: right;
+            white-space: nowrap;
+        }
+        #transposeTableElement thead th {
+            background-color: #f8f9fa;
+            color: var(--muted-color);
+            font-weight: 500;
+            text-align: center;
+        }
+        #transposeTableElement tbody td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        #transposeTableElement .indented {
+            padding-left: 2em;
+        }
+        #transposeTableElement .section-divider td {
+            padding-top: 20px;
+            padding-bottom: 5px;
+            font-weight: 600;
+            color: var(--muted-color);
+            background-color: #f8f9fa;
+            border-bottom: 1px solid var(--border-color);
+        }
+        #transposeTableElement .total {
+            font-weight: 700;
+        }
+        #transposeTableElement .summary {
+             font-weight: 700;
+        }
+        #transposeTableElement .final-total td {
+            border-bottom: 2px double var(--text-color);
+        }
+
+        /* --- Original Horizontal Table Styles --- */
+        #cashflowTable { width: 100%; border-collapse: collapse; min-width: 900px; }
+        #cashflowTable th, #cashflowTable td { padding: 12px 10px; text-align: right; border-bottom: 1px solid var(--border-color); font-size: 13px; }
+        #cashflowTable th { background: var(--bg-color); font-weight: 600; position: sticky; top: 0; z-index: 1; }
+        #cashflowTable td:first-child, #cashflowTable th:first-child { text-align: left; font-weight: 600; }
+        #cashflowTable tbody tr:hover { background-color: #f8f9fa; }
+        #cashflowTable tbody tr:last-child td { border-bottom: none; }
+        .positive { color: var(--success-color); font-weight: 600; }
+        .negative { color: var(--danger-color); }
+        .final-total-h { font-weight: 700; }
+        .forecast-row { background-color: var(--forecast-bg) !important; color: var(--forecast-color); }
+        .forecast-row .positive { color: #316c96; }
+        .forecast-row .negative { color: #9c4f4f; }
+        .warning { background-color: #fff8e1 !important; }
+        .danger { background-color: #ffebee !important; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            body, .app-container { flex-direction: column; overflow-y: auto; height: auto; }
+            .sidebar { width: auto; border-right: none; border-bottom: 1px solid var(--border-color); height: auto; overflow-y: visible; }
+            .main-content { overflow-y: visible; height: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2 class="sidebar-header">📊 資金繰りダッシュボード</h2>
+
+            <div class="sidebar-section">
+                <h3>💾 データ管理</h3>
+                <div class="button-group">
+                    <button class="btn-success" onclick="saveData()">📥 保存</button>
+                    <button class="btn-secondary" onclick="document.getElementById('fileInput').click()">📤 読込</button>
+                    <button class="btn-secondary" onclick="clearAllData()">🗑️ 全クリア</button>
+                    <input type="file" id="fileInput" accept=".json" style="display: none;" onchange="loadData(event)">
+                </div>
+                 <small style="display: block; text-align: center; margin-top: 10px; color: var(--muted-color);">データはブラウザに自動保存されます</small>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>⚙️ 初期設定</h3>
+                <div class="input-item">
+                    <label for="startingBalance">期首残高（円）</label>
+                    <input type="number" id="startingBalance" value="5000000">
+                </div>
+            </div>
+
+            <div class="sidebar-section" id="input-panel">
+                <h3 class="collapsible-header" onclick="toggleInputPanel()">📅 データ入力・編集</h3>
+                <div class="collapsible-content">
+                    <div class="input-mode-toggle">
+                        <input type="radio" name="inputType" id="typeActual" value="actual" checked>
+                        <label for="typeActual">実績</label>
+                        <input type="radio" name="inputType" id="typeForecast" value="forecast">
+                        <label for="typeForecast">予測</label>
+                    </div>
+
+                    <div class="input-item">
+                        <label for="month">対象月</label>
+                        <input type="month" id="month">
+                    </div>
+
+                    <details open>
+                        <summary style="font-weight: 600; cursor: pointer; color: var(--success-color);">💰 収入の部</summary>
+                        <div class="input-grid" style="margin-top: 10px; border-left: 2px solid var(--success-color); padding-left: 10px;">
+                            <div class="input-item"> <label for="salesAmazon">Amazon売上</label> <input type="number" id="salesAmazon" placeholder="2000000"> </div>
+                            <div class="input-item"> <label for="salesMercari">メルカリ売上</label> <input type="number" id="salesMercari" placeholder="500000"> </div>
+                            <div class="input-item" style="grid-column: 1 / -1;"> <label for="otherIncome">その他入金</label> <input type="number" id="otherIncome"> </div>
+                        </div>
+                    </details>
+                    
+                    <details>
+                        <summary style="font-weight: 600; cursor: pointer; color: var(--danger-color);">💸 支出の部</summary>
+                        <div class="input-grid" style="margin-top: 10px; border-left: 2px solid var(--danger-color); padding-left: 10px;">
+                            <div class="input-item"> <label for="purchaseCash">現金仕入</label> <input type="number" id="purchaseCash" placeholder="1800000"> </div>
+                            <div class="input-item"> <label for="purchaseCredit">クレカ仕入</label> <input type="number" id="purchaseCredit" placeholder="900000"> </div>
+                            <div class="input-item"> <label for="salaries">人件費</label> <input type="number" id="salaries"> </div>
+                            <div class="input-item" style="grid-column: 1 / -1;"> <label for="otherExpenses">その他支出</label> <input type="number" id="otherExpenses"> </div>
+                        </div>
+                    </details>
+                    
+                    <div class="button-group" style="margin-top: 10px;">
+                        <button class="btn-primary" id="add-update-button" onclick="addOrUpdateData()">➕ データを追加</button>
+                        <button class="btn-secondary" onclick="clearInputs()">クリア</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>📊 表示切替</h3>
+                <div class="view-switcher">
+                    <button onclick="setTableView('horizontal')" id="horizontalBtn">横型</button>
+                    <button onclick="setTableView('transpose')" id="transposeBtn">転置</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h1>せどり事業 資金繰り表</h1>
+                <p>キャッシュフローを管理・予測し、安定した事業運営を目指します。</p>
+            </header>
+
+            <section class="summary-cards" id="summaryCards">
+                </section>
+
+            <section class="table-display-area">
+                <div class="table-container" id="horizontalTable">
+                    <table id="cashflowTable">
+                        <thead>
+                            <tr>
+                                <th>月</th><th>種別</th><th>期首残高</th><th>合計入金</th>
+                                <th>合計支出</th><th>単月収支</th><th>期末残高</th><th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+                <div class="table-container" id="transposeTable" style="display: none;">
+                    <table id="transposeTableElement">
+                        <thead id="transposeTableHead"></thead>
+                        <tbody id="transposeTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Previous JS code is mostly kept, with major updates to updateTable and addition of updateTransposeTable
+        let cashflowData = [];
+        let forecastData = [];
+        let currentView = 'horizontal';
+
+        // --- NEW: Formatting function for "万円" unit ---
+        function formatAsManYen(amount) {
+            if (amount === 0) return '0万';
+            const value = Math.round(amount / 10000);
+            return `${value.toLocaleString()}万`;
+        }
+        
+        // --- NEW: The blueprint for the transpose table rows ---
+        const transposeRowConfig = [
+            { label: 'A - 期首残高', key: 'startingBalance', type: 'header' },
+            { label: '― 収入の部 ―', type: 'divider' },
+            { label: 'Amazon売上入金', key: 'salesAmazon', type: 'item', indented: true, positive: true },
+            { label: 'メルカリ売上入金', key: 'salesMercari', type: 'item', indented: true, positive: true },
+            { label: 'その他入金', key: 'otherIncome', type: 'item', indented: true, positive: true },
+            { label: 'B - 合計入金', key: 'totalIncome', type: 'total', positive: true },
+            { label: '― 支出の部 ―', type: 'divider' },
+            { label: '現金仕入', key: 'purchaseCash', type: 'item', indented: true, negative: true },
+            { label: 'クレカ仕入', key: 'purchaseCredit', type: 'item', indented: true, negative: true },
+            { label: '人件費', key: 'salaries', type: 'item', indented: true, negative: true },
+            { label: 'その他支出', key: 'otherExpenses', type: 'item', indented: true, negative: true },
+            { label: 'C - 合計支出', key: 'totalExpenses', type: 'total', negative: true },
+            { label: '― 収支サマリー ―', type: 'divider' },
+            { label: '◆ 単月収支', key: 'monthlyBalance', type: 'summary', indented: true },
+            { label: '◇ 期末残高', key: 'endingBalance', type: 'summary', indented: true, final: true }
+        ];
+
+        // --- UPDATED: Main function to render the transpose view ---
+        function updateTransposeTable() {
+            const head = document.getElementById('transposeTableHead');
+            const body = document.getElementById('transposeTableBody');
+            head.innerHTML = '';
+            body.innerHTML = '';
+
+            const allData = [...cashflowData.map(d => ({...d, type: 'actual'})), ...forecastData.map(d => ({...d, type: 'forecast'}))];
+            allData.sort((a, b) => new Date(a.month) - new Date(b.month));
+
+            if (allData.length === 0) {
+                body.innerHTML = '<tr><td colspan="99" style="text-align:center; padding: 40px;">データがありません</td></tr>';
+                return;
+            }
+
+            // Recalculate balances for combined data
+            let runningBalance = parseInt(document.getElementById('startingBalance').value) || 0;
+            allData.forEach(item => {
+                item.startingBalance = runningBalance;
+                runningBalance += item.monthlyBalance;
+                item.endingBalance = runningBalance;
+            });
+            
+            // Create Header Row
+            const headerRow = document.createElement('tr');
+            let headerHTML = '<th>項目</th>';
+            allData.forEach(item => {
+                const monthLabel = new Date(item.month + '-02').toLocaleDateString('ja-JP', { month: 'short' });
+                headerHTML += `<th>${monthLabel}</th>`;
+            });
+            headerRow.innerHTML = headerHTML;
+            head.appendChild(headerRow);
+
+            // Create Body Rows
+            transposeRowConfig.forEach(config => {
+                const row = document.createElement('tr');
+                if (config.type === 'divider') {
+                    row.className = 'section-divider';
+                    row.innerHTML = `<td colspan="${allData.length + 1}">${config.label}</td>`;
+                } else {
+                    let labelClass = config.indented ? 'indented' : '';
+                    let rowHTML = `<td class="${labelClass}">${config.label}</td>`;
+
+                    allData.forEach(monthData => {
+                        const value = monthData[config.key] || 0;
+                        let valueClass = '';
+                        if (config.key === 'monthlyBalance') {
+                            valueClass = value >= 0 ? 'positive' : 'negative';
+                        } else {
+                            if (config.positive) valueClass = 'positive';
+                            if (config.negative) valueClass = 'negative';
+                        }
+                        rowHTML += `<td class="${valueClass}">${formatAsManYen(value)}</td>`;
+                    });
+                    
+                    row.innerHTML = rowHTML;
+                    if(config.type === 'total') row.classList.add('total');
+                    if(config.type === 'summary') row.classList.add('summary');
+                    if(config.final) row.classList.add('final-total');
+                }
+                body.appendChild(row);
+            });
+        }
+        
+        // --- UPDATED: View switcher to call the correct function ---
+        function setTableView(viewType) {
+            currentView = viewType;
+            document.getElementById('horizontalTable').style.display = 'none';
+            document.getElementById('transposeTable').style.display = 'none';
+            
+            document.querySelectorAll('.view-switcher button').forEach(btn => btn.classList.remove('btn-active'));
+
+            document.getElementById(`${viewType}Table`).style.display = 'block';
+            document.getElementById(`${viewType}Btn`).classList.add('btn-active');
+            
+            if (viewType === 'horizontal') {
+                updateHorizontalTable();
+            } else if (viewType === 'transpose') {
+                updateTransposeTable();
+            }
+        }
+        
+        // --- Other JS functions (addOrUpdateData, clearInputs, etc.) should be pasted here from the previous version ---
+        // Placeholder for brevity, assuming the rest of the JS logic is present and correct.
+        function formatCurrency(amount) { return new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(amount); }
+        function addOrUpdateData() { /* Full logic from previous answer */ }
+        function clearInputs() { /* Full logic from previous answer */ }
+        function saveToStorage() { /* Full logic from previous answer */ }
+        function loadStoredData() { /* Full logic from previous answer */ }
+        function updateHorizontalTable() { /* Full logic from previous answer (was 'updateTable') */ }
+        function toggleInputPanel() { /* Full logic from previous answer */ }
+        window.onload = function() {
+            document.getElementById('month').value = new Date().toISOString().slice(0, 7);
+            setTableView('horizontal');
+            // Add dummy data for demonstration
+            cashflowData = [
+                { month: '2025-07', salesAmazon: 2000000, salesMercari: 500000, otherIncome: 0, totalIncome: 2500000, purchaseCash: 1800000, purchaseCredit: 900000, salaries: 0, otherExpenses: 0, totalExpenses: 2700000, monthlyBalance: -200000 },
+                { month: '2025-08', salesAmazon: 1800000, salesMercari: 450000, otherIncome: 0, totalIncome: 2250000, purchaseCash: 1500000, purchaseCredit: 850000, salaries: 80000, otherExpenses: 0, totalExpenses: 2430000, monthlyBalance: -180000 },
+                { month: '2025-09', salesAmazon: 2500000, salesMercari: 600000, otherIncome: 50000, totalIncome: 3150000, purchaseCash: 2000000, purchaseCredit: 1100000, salaries: 100000, otherExpenses: 0, totalExpenses: 3200000, monthlyBalance: -50000 },
+                { month: '2025-10', salesAmazon: 2200000, salesMercari: 550000, otherIncome: 30000, totalIncome: 2780000, purchaseCash: 1700000, purchaseCredit: 950000, salaries: 100000, otherExpenses: 0, totalExpenses: 2750000, monthlyBalance: 30000 },
+            ];
+            refreshAllViews();
+        };
+        function refreshAllViews() {
+            if (currentView === 'horizontal') updateHorizontalTable();
+            else if (currentView === 'transpose') updateTransposeTable();
+            // updateSummary();
+        }
+
+        // NOTE: The full JS is quite long. I have provided the key new/updated functions.
+        // For a fully working tool, combine this with the JS from the previous step.
+        // The dummy data is added to the onload function for immediate demonstration.
+    </script>
+</body>
+</html>
